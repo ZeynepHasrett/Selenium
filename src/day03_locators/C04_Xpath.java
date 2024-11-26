@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C05_Xpath_TextKullanimi {
+public class C04_Xpath {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -20,11 +20,11 @@ public class C05_Xpath_TextKullanimi {
         driver.get("https://testotomasyonu.com/addremove/");
 
         // 2- Add Element butonuna basin
-        driver.findElement(By.xpath("//button[.='Add']"))
+        driver.findElement(By.xpath("//*[@id='sub-btn']"))
                 .click();
 
         // 3- Remove butonu’nun gorunur oldugunu test edin
-        WebElement removeButonu = driver.findElement(By.xpath("//button[text()='Remove']"));
+        WebElement removeButonu = driver.findElement(By.xpath("//*[@*='remove-btn']"));
 
         if (removeButonu.isDisplayed()) {
             System.out.println("Remove butonu testi PASSED");
@@ -34,11 +34,11 @@ public class C05_Xpath_TextKullanimi {
         removeButonu.click();
 
         // 5- “Add/Remove Elements” yazisinin gorunur oldugunu test edin
-        WebElement addRemoveYaziElementi = driver.findElement(By.xpath("//h2[.='Add/Remove Elements']"));
+        WebElement addRemoveYaziElementi = driver.findElement(By.tagName("h2"));
 
         if (addRemoveYaziElementi.isDisplayed()) {
             System.out.println("Add Remove Yazisi gorunme testi PASSED");
-        } else System.out.println("Add Remove Yazisi gorunme testi FAILED");
+        } else System.out.println("Add/Remove Yazisi gorunme testi FAILED");
 
         // 6- Sayfayi kapatin
         Thread.sleep(2000);
