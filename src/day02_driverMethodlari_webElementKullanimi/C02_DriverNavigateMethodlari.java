@@ -30,8 +30,7 @@ public class C02_DriverNavigateMethodlari {
         */
 
         // System.setProperty("Webdriver.driver.chrome.driver", "kurulumDosyalari/chromedriver-win64/chromedriver.exe");
-        WebDriver driver = new FirefoxDriver();
-
+        WebDriver driver = new ChromeDriver();
 
         //2. Youtube ana sayfasina gidelim . https://www.youtube.com/
         driver.get("https://www.youtube.com/");
@@ -49,15 +48,25 @@ public class C02_DriverNavigateMethodlari {
         driver.get("https://www.testotomasyonu.com/");
 
         //   Title'in "Test Otomasyonu" icerdigini test edin
+        String expectedTitleIcerik = "Test Otomasyonu";
+        String actualTitle = driver.getTitle();
+
+        if (actualTitle.contains(expectedTitleIcerik)) {
+            System.out.println("Test otomasyonu title testi PASSED");
+        } else System.out.println("Test otomasyonu title testi FAILED");
 
         //4. Tekrar YouTube'sayfasina donelim
+        // driver.navigate().to(); // driver.get() ile ayni islevi yerine getirir
+        driver.navigate().back();
+
         //5. Yeniden testotomasyonu sayfasina gidelim
+        driver.navigate().forward();
+
         //6. Sayfayi Refresh(yenile) yapalim
+        driver.navigate().refresh();
+
         //7. Sayfayi kapatalim / Tum sayfalari kapatalim
-
-        driver.get("https://www.testotomasyonu.com");
-
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         driver.quit();
 
     }
